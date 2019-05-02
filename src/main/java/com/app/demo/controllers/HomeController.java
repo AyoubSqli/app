@@ -11,6 +11,11 @@ public class HomeController {
     public String getHomePage(Model model)
     {
         return  "index" ;
-
     }
+    @RequestMapping("/hello")
+    public String getHelloPage(Model model)
+    {
+        return  "hello" ;
+    }
+
 }
