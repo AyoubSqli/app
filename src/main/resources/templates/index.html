@@ -5,7 +5,18 @@
 </head>
 <body>
 <h1>Welcome!</h1>
-
-<p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+        <form method="Post" action="login">
+            <table>
+                <tr>
+                    <input type="text" placeholder="Id" id="id"/>
+                </tr>
+                <tr>
+                    <input type="text" placeholder="Password" id="password"/>
+                </tr>
+                <tr>
+                    <input type="submit" title="log in"/>
+                </tr>
+            </table>
+        </form>
 </body>
 </html>
