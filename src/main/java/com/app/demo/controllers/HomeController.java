@@ -1,28 +1,35 @@
 package com.app.demo.controllers;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.app.demo.Dao.UserDao;
+import com.app.demo.entities.Client;
+import com.app.demo.entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Collection;
+import java.util.List;
+
 
 @Controller
-@RequestMapping("/hello")
 public class HomeController {
 
-    @GetMapping
-    public ModelAndView getHelloPage(@AuthenticationPrincipal final UserDetails userDetails)
+    @Autowired
+    private UserDao userDao ;
+    @RequestMapping("/hello")
+    public String getHelloPage(Model model)
     {
-        ModelAndView mav = new ModelAndView("hello");
-        String username = userDetails.getUsername();
-        Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
-        mav.addObject("authorities",authorities) ;
-        return  mav ;
+      /*  userDao.save(new Client("test1","test1","test1@mail.com","test1","test1"));
+        userDao.save(new Client("test2","test2","test2@mail.com","test2","test2"));
+        userDao.save(new Client("test3","test3","test3@mail.com","test3","test3"));
+        userDao.save(new Client("test4","test4","test4@mail.com","test4","test4"));*/
+        List<User> users = userDao.findAll();
+        return  "hello" ;
     }
-
+    @RequestMapping("/index")
+    public String getIndex(Model model)
+    {
+        model.addAttribute("text","just a text for testing ");
+        return "index" ;
+    }
 }
