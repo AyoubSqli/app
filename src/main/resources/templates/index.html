@@ -1,22 +1,33 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Security Example</title>
+    <title>My App</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
-<h1>Welcome!</h1>
-        <form method="Post" action="login">
-            <table>
-                <tr>
-                    <input type="text" placeholder="Id" id="id"/>
-                </tr>
-                <tr>
-                    <input type="text" placeholder="Password" id="password"/>
-                </tr>
-                <tr>
-                    <input type="submit" title="log in"/>
-                </tr>
-            </table>
-        </form>
+<form action="/login" method="POST">
+
+    <h3>Login</h3>
+    <div class="container">
+
+        <label for="username"><b>User Name</b></label>
+        <input id="username" type="text" placeholder="Enter you're UserName" name="username" required="">
+
+        <label for="password"><b>Password</b></label>
+        <input id="password" type="password" placeholder="Enter you're password" name="password" required="">
+
+        <button type="submit">Log In</button>
+        <label>
+            <input type="checkbox" checked="" id="remember">remember me
+        </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <button class="cnclbutton">Cancel</button>
+        <span class="psw">Forgot <a href="#">password ?</a></span>
+    </div>
+</form>
+
 </body>
 </html>

@@ -6,22 +6,21 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "Client")
-public class Client implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codeClient ;
-    private String nom ;
+@DiscriminatorValue("CL")
+public class Client extends User implements Serializable {
     private String adresse ;
     @OneToMany(mappedBy = "client")
     private Collection<Compte> comptes ;
 
-    public Long getCodeClient() {
-        return codeClient;
+    public Client() {
+    }
+    public Client( String adresse ) {
+        this.adresse = adresse;
     }
 
-    public void setCodeClient(Long codeClient) {
-        this.codeClient = codeClient;
+    public Client(String username, String password, String email, String name, String adresse) {
+        super(username, password, email, name);
+        this.adresse = adresse;
     }
 
     public String getAdresse() {
@@ -32,26 +31,5 @@ public class Client implements Serializable {
         this.adresse = adresse;
     }
 
-    public Client() {
-    }
-    public Client(String nom, String adresse ) {
-        this.adresse = adresse;
-        this.nom = nom;
-    }
 
-    public Long getcodeClient() {
-        return codeClient;
-    }
-
-    public void setcodeClient(Long codeClient) {
-        this.codeClient = codeClient;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
 }

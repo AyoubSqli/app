@@ -6,11 +6,8 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class Employee implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codeEmployee ;
-    private String name ;
+@DiscriminatorValue("EM")
+public class Employee extends User implements Serializable {
     @ManyToOne
     @JoinColumn(name = "code_employeeSup")
     private Employee employeeSup;
@@ -21,24 +18,13 @@ public class Employee implements Serializable {
     public Employee() {
     }
 
-    public Employee(String name) {
-        this.name = name;
+    public Employee(Employee employeeSup) {
+        this.employeeSup = employeeSup;
     }
 
-    public Long getCodeEmployee() {
-        return codeEmployee;
-    }
-
-    public void setCodeEmployee(Long codeEmployee) {
-        this.codeEmployee = codeEmployee;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Employee(String username, String password, String email, String name, Employee employeeSup) {
+        super(username, password, email, name);
+        this.employeeSup = employeeSup;
     }
 
     public Employee getEmployeeSup() {
