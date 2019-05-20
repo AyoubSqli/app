@@ -1,6 +1,9 @@
 package com.app.demo.controllers;
 
+import com.app.demo.entities.Client;
+import com.app.demo.entities.Employee;
 import com.app.demo.entities.User;
+import com.app.demo.services.EmployeeService;
 import com.app.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,19 +18,19 @@ import java.util.Optional;
 public class HomeFormsController {
 
     @Autowired
-    private UserService userService ;
+    private EmployeeService employeeService;
     @RequestMapping("/login")
     public String getLoginForm(Model model, @ModelAttribute(name = "username") String username,@ModelAttribute(name = "password") String password)
     {
-        List<User> users = userService.getUserByUsername(username) ;
-        System.out.println(users.size());
-                if(users.isEmpty())
+        Employee employee = employeeService.getEmployeeByUserName(username) ;
+                if(employee ==null)
                 {
-                    model.addAttribute("user","null");
+                    model.addAttribute("error"," Incorrect UserName Or Password , Please Verify you're Informations");
+                    return "index" ;
                 }else
                 {
-                    model.addAttribute("user",users.get(0));
+                    model.addAttribute("employee",employee);
+                    return "hello" ;
                 }
-        return "hello" ;
     }
 }
