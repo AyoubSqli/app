@@ -7,32 +7,34 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-<form action="/login" method="POST">
+        <div class="bodyForm ">
+                <form action="/login" method="POST">
 
 
-    <div th:if="${error!= null}" class="alert alert-danger" >
-        <strong th:text="${error}"></strong>
-    </div>
-    <h3>Login</h3>
-    <div class="container">
+                    <div th:if="${error!= null}" class="alert alert-danger " >
+                        <strong th:text="${error}"></strong>
+                    </div>
+                    <h3>Login</h3>
+                    <div class="container">
 
-        <label for="username"><b>User Name</b></label>
-        <input id="username" type="text" placeholder="Enter you're UserName" name="username" required="">
+                        <label for="username"><b>User Name</b></label>
+                        <input id="username" type="text" placeholder="Enter you're UserName" name="username" required="">
 
-        <label for="password"><b>Password</b></label>
-        <input id="password" type="password" placeholder="Enter you're password" name="password" required="">
+                        <label for="password"><b>Password</b></label>
+                        <input id="password" type="password" placeholder="Enter you're password" name="password" required="">
 
-        <button type="submit">Log In</button>
-        <label>
-            <input type="checkbox" checked="" id="remember">remember me
-        </label>
-    </div>
+                        <button type="submit">Log In</button>
+                        <label>
+                            <input type="checkbox" checked="" id="remember">remember me
+                        </label>
+                    </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-        <button class="cnclbutton">Cancel</button>
-        <span class="psw">Forgot <a href="#">password ?</a></span>
-    </div>
-</form>
+                    <div class="container" style="background-color:#f1f1f1">
+                        <button class="btn btn-secondary">Cancel</button>
+                        <span class="psw">Forgot <a href="#">password ?</a></span>
+                    </div>
+                </form>
 
+        </div>
 </body>
 </html>

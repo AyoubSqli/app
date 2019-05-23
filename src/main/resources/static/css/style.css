@@ -2,14 +2,18 @@ body{
     font-family:"Helvetica",sans-serif,Arial ;
     background-color : aliceblue
 }
+.bodyForm{
+    padding : 30px;
+}
 form{
 
     border: 5px solid;
-    padding-left: 20px;
-    padding-right: 50px;
+    /*padding-left: 20px;
+    padding-right: 50px;*/
+    margin : 0 auto;
     width: 700px;
-    margin-left: 200px;
-    margin-top : 200px;
+    /*margin-left: 200px;
+    margin-top : 200px;*/
     padding-bottom : 30px;
 }
 form h3 {
@@ -38,11 +42,6 @@ button{
 .container{
     padding: 1px;
     margin-bottom : 20px;
-}
-.cnclbutton{
-    width : auto ;
-    padding : 10px 18px ;
-    background-color : rosybrown;
 }
 span.psw {
     padding-top : 20px;
